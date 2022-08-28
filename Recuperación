@@ -1,0 +1,31 @@
+#!/bin/bash
+
+clear
+
+echo "-------------------------------"
+echo "---Recuperacion de Elementos---"
+echo "-------------------------------"
+
+sleep 5
+
+cd /home/dizzy/.Respaldo //Se ingresara al directorio donde se almaceno el respaldo de los archivos
+
+   //Hace referencia al directorio de donde se almaceno el respaldo del directorio eliminado
+cp /home/dizzy/.Respaldo/* /home/dizzy/Imágenes
+                        //Es el directorio hara la ilusion de recuperar los elementos que anteriormente fueron borrados pero que estuvieron
+                        //almacenados dentro del directorio .Respaldo copiandolos de regreso al directorio de origen
+
+clear //Se limpiara la pantalla
+
+//Para evitar replicas se eliminaran los archivos almacenados en el directorio .Respaldo
+//shred -n sobreescribira los documentos, mientras que el 5 significa que hara una sobreescritura 5 veces
+//z sobreescribira todos los archivos asignandoles un 0 de valor
+//u removera los archivos despues de sobreescribirlos
+//v mostrara el proceso al sistema
+shred -n 5 -zuv *
+
+clear //limpiara la pantalla
+
+echo "----------------------------------"
+echo "--Se Concluyo Satisfactoriamente--"
+echo "----------------------------------"
