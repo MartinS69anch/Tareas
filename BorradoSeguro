@@ -1,0 +1,30 @@
+#!/bin/bash
+
+clear
+
+echo "--------------------------"
+echo "---Borrado de Elementos---"
+echo "--------------------------"
+
+sleep 5
+
+cd /home/dizzy/Imágenes //Se ingresara al directorio donde se almacen los archivos que se van a eliminar y respaldar
+
+   //Hace referencia al directorio de donde se hara una copia, * indica todos los archivos almacenados
+cp /home/dizzy/Imágenes/* /home/dizzy/.Respaldo
+                        //Es el directorio donde se almacenara la copia de los archivos que se eliminaran
+                        //.Respaldo se trata de un directorio oculto, lo que dara la ilusion de backup
+
+clear //Se limpiara la pantalla
+
+//shred -n sobreescribira los documentos, mientras que el 5 significa que hra una sobreescritura 5 veces
+//z sobreescribira todos los archivos asignandoles un 0 de valor
+//u removera los archivos despues de sobreescribirlos
+//v mostrara el proceso al sistema
+shred -n 5 -zuv *
+
+clear //limpiara la pantalla
+
+echo "----------------------------------"
+echo "--Se Concluyo Satisfactoriamente--"
+echo "----------------------------------"
